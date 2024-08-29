@@ -7,14 +7,15 @@ public class Snake {
 	GamePanel gp;
 	KeyHandler keyH;
 	
-	int speed;
+	int speed, length;
 	int x, y, side;
+	String direction;
+	
 	
 	public Snake(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
 		this.keyH = keyH;
 		
-		int length = 5;
 		side = gp.tileSize;
 		x = gp.screenWidth/2;
 		y = gp.screenHeight/2;
@@ -24,26 +25,46 @@ public class Snake {
 	}
 	
 	public void defaultSettings() {
-		
+		length = 5;
+		direction = "up";
 	}
 
 	public void update() {
+		//direction may be useful for length of snake idk
 		if(keyH.upPressed == true) {
-			y -= speed;
+			direction = "up";
 		}
 		else if(keyH.downPressed == true) {
-			y += speed;
+			direction = "down";
 		}
 		else if(keyH.leftPressed == true) {
-			x -= speed;		
+			direction = "left";			
 		}
 		else if(keyH.rightPressed == true) {
-			x += speed;				
+			direction = "right";				
+		}
+		
+		switch(direction) {
+		case "up": y -= speed; break;
+		case "down": y += speed; break;
+		case "left": x -= speed; break;
+		case "right": x += speed; break;
+		}
+		
+		if(x < -gp.tileSize) {
+			x = gp.screenWidth - gp.tileSize;
+		} else if(x > gp.screenWidth) {
+			x = 0;
+		}else if(y < -1 * gp.tileSize) {
+			y = gp.screenHeight - gp.tileSize;
+		} else if(y > gp.screenHeight + gp.tileSize) {
+			y = 0;
 		}
 	}
 	
 	public void draw(Graphics2D g2) {
 		g2.setColor(Color.white);
 		g2.fillRect(x, y, side, side);
+		
 	}
 }
