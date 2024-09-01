@@ -51,13 +51,13 @@ public class Snake {
 		case "right": x += speed; break;
 		}
 		
-		if(x < -gp.tileSize) {
+		if(x < 0) {
 			x = gp.screenWidth - gp.tileSize;
-		} else if(x > gp.screenWidth) {
+		} else if(x > gp.screenWidth - gp.tileSize) {
 			x = 0;
-		}else if(y < -1 * gp.tileSize) {
+		}else if(y < 0) {
 			y = gp.screenHeight - gp.tileSize;
-		} else if(y > gp.screenHeight + gp.tileSize) {
+		} else if(y > gp.screenHeight - gp.tileSize) {
 			y = 0;
 		}
 	}
