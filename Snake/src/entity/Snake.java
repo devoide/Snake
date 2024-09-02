@@ -1,8 +1,11 @@
-package main;
+package entity;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+
+import main.GamePanel;
+import main.KeyHandler;
 
 public class Snake {
 	GamePanel gp;
@@ -38,10 +41,10 @@ public class Snake {
 		tailX.add(x + side);
 		
 		tailY.add(y);
-		tailY.add(y + side);
+		tailY.add(y);
 	}
 	
-	public void snaketail() {
+	public void snaketail() {// logic is simple, u just set the [0] x to the [1] index one, and so on
 		prevX = tailX.get(0);
 		prevY = tailY.get(0);
 		
@@ -82,19 +85,20 @@ public class Snake {
 	public void update() {	
 		
 		//direction may be useful for length of snake idk
-		if(keyH.upPressed == true) {
+		if(keyH.upPressed && direction != "down") {
 			direction = "up";
 		}
-		else if(keyH.downPressed == true) {
+		else if(keyH.downPressed && direction != "up") {
 			direction = "down";
 		}
-		else if(keyH.leftPressed == true) {
-			direction = "left";			
+		else if(keyH.leftPressed && direction != "right") {
+			direction = "left";		
 		}
-		else if(keyH.rightPressed == true) {
-			direction = "right";				
+		else if(keyH.rightPressed && direction != "left") {
+			direction = "right";	
 		}
 
+		
 		switch(direction) {
 		case "up": y -= speed; break;
 		case "down": y += speed; break;

@@ -7,6 +7,9 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import entity.Apple;
+import entity.Snake;
+
 
 public class GamePanel extends JPanel implements Runnable{
 	
@@ -15,20 +18,23 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	public final int tileSize = baseTile * scale;
 	public final int maxScreenCol = 20;
-	public final int maxScxreenRow = 20;
+	public final int maxScreenRow = 20;
 	public final int screenWidth = tileSize * maxScreenCol;
-	public final int screenHeight = tileSize * maxScxreenRow;
+	public final int screenHeight = tileSize * maxScreenRow;
 	
 	int FPS = 10;
 	
 	Thread gameThread;
 	KeyHandler keyH = new KeyHandler();
+	public Background bg = new Background(this);
 	public Snake snake = new Snake(this, keyH);
 	public Apple apple = new Apple(this);
 	
 	public GamePanel() {
+		Color c = new Color(21,21,21);
+		
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-		this.setBackground(Color.black);
+		this.setBackground(c);
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyH);
 		this.setFocusable(true);
@@ -77,6 +83,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 		Graphics2D g2 = (Graphics2D)g;
 		
+		bg.draw(g2);
 		snake.draw(g2);
 		apple.draw(g2);
 		
