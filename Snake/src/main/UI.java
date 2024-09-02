@@ -10,8 +10,6 @@ public class UI {
 	
 	public UI(GamePanel gp) {
 		this.gp = gp;
-			
-		
 		points = new Font("Arial", Font.PLAIN, 20);
 		
 	}
@@ -19,7 +17,8 @@ public class UI {
 	public void draw(Graphics2D g2) {
 		g2.setFont(points);
         g2.setColor(Color.white);
-        g2.drawString(Integer.toString(gp.snake.points), gp.screenWidth/2 - 10, 20);
+        int textLength = (int) g2.getFontMetrics().getStringBounds(Integer.toString(gp.snake.points), g2).getWidth();
+        g2.drawString(Integer.toString(gp.snake.points), gp.screenWidth/2 - textLength/2, 20);
 	}
 	
 }
