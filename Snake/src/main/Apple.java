@@ -19,15 +19,23 @@ public class Apple {
 		y = rand.nextInt(gp.screenWidth / gp.tileSize) * gp.tileSize;
 		 
 	}
-	 
+	
+	public boolean collision() {
+		if (gp.snake.x < x + side && gp.snake.x + gp.snake.side > x &&
+		        gp.snake.y < y + side && gp.snake.y + gp.snake.side > y) {
+		        
+		        return true;
+		    }
+		return false;
+	}
+	
 	public void update() {
-	    if (gp.snake.x < x + side && gp.snake.x + gp.snake.side > x &&
-	        gp.snake.y < y + side && gp.snake.y + gp.snake.side > y) {
-	        
+	    if (collision()) {
 	        x = rand.nextInt(gp.screenWidth / gp.tileSize) * gp.tileSize;
 	        y = rand.nextInt(gp.screenHeight / gp.tileSize) * gp.tileSize;
 	    }
 	}
+	
 	 
 	public void draw(Graphics2D g2) {
 		g2.setColor(Color.red);
@@ -35,3 +43,4 @@ public class Apple {
 		System.out.println(y);
 	}
 }
+
