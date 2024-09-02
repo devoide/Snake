@@ -26,6 +26,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	Thread gameThread;
 	KeyHandler keyH = new KeyHandler();
+	public Sound sfx = new Sound();
 	public Background bg = new Background(this);
 	public Snake snake = new Snake(this, keyH);
 	public Apple apple = new Apple(this);
@@ -90,6 +91,11 @@ public class GamePanel extends JPanel implements Runnable{
 		ui.draw(g2);
 		
 		g2.dispose();
+	}
+	
+	public void playSFX(int i) {
+		sfx.setFile(i);
+		sfx.play();
 	}
 
 }

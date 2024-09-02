@@ -72,6 +72,7 @@ public class Snake {
 			tailX.add(0);
 			tailY.add(0);
 			points += 1;
+			gp.playSFX(0);;
 		}
 	}
 	
