@@ -24,6 +24,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread gameThread;
 	KeyHandler keyH = new KeyHandler();
 	public Snake snake = new Snake(this, keyH);
+	public Apple apple = new Apple(this);
 	
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -64,6 +65,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	public void update() {
 		snake.update();
+		apple.update();
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -72,6 +74,7 @@ public class GamePanel extends JPanel implements Runnable{
 		Graphics2D g2 = (Graphics2D)g;
 		
 		snake.draw(g2);
+		apple.draw(g2);
 		
 		g2.dispose();
 	}

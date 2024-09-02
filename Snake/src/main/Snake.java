@@ -96,8 +96,12 @@ public class Snake {
 		for (int i = 0; i < length; i++) {
 			g2.fillRect(tailX[i], tailY[i], side, side);
 		}	
-
 		
+		g2.setColor(Color.black);
+	    
+	    for (int i = 0; i < length; i++) {
+	        g2.drawRect(tailX[i], tailY[i], side, side);
+	    }
 	}
 }
 
