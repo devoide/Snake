@@ -63,6 +63,10 @@ public class GamePanel extends JPanel implements Runnable{
 		}
 	}
 	
+	public void stop() {
+		gameThread = null;
+	}
+	
 	public void update() {
 		snake.update();
 		apple.update();

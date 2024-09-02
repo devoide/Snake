@@ -40,7 +40,6 @@ public class Apple {
 	public void draw(Graphics2D g2) {
 		g2.setColor(Color.red);
 		g2.fillRect(x, y, side, side);
-		System.out.println(y);
 	}
 }
 

@@ -71,6 +71,13 @@ public class Snake {
 		}
 	}
 	
+	public void isDead() {
+		for (int i = 1; i < tailX.size(); i++) {
+			if(tailX.get(i) == x && tailY.get(i) == y) {
+				gp.stop();
+			}
+		}
+	}
 
 	public void update() {	
 		
@@ -107,6 +114,7 @@ public class Snake {
 			y = 0;
 		}
 		
+		isDead();
 		addtail();
 		snaketail();
 	}
