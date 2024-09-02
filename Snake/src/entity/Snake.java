@@ -11,7 +11,7 @@ public class Snake {
 	GamePanel gp;
 	KeyHandler keyH;
 	
-	int speed, length;
+	public int speed, length, points;
 	int x, y, side, prevX, prevY;
 	String direction;
 	ArrayList<Integer> tailX, tailY;
@@ -36,6 +36,7 @@ public class Snake {
 	
 	public void defaultSettings() {
 		direction = "left";
+		points = 0;
 		
 		tailX.add(x);
 		tailX.add(x + side);
@@ -70,7 +71,7 @@ public class Snake {
 		if(gp.apple.collision()) {
 			tailX.add(0);
 			tailY.add(0);
-			
+			points += 1;
 		}
 	}
 	

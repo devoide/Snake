@@ -17,8 +17,8 @@ public class GamePanel extends JPanel implements Runnable{
 	final int scale = 5;
 	
 	public final int tileSize = baseTile * scale;
-	public final int maxScreenCol = 20;
-	public final int maxScreenRow = 20;
+	public final int maxScreenCol = 10;
+	public final int maxScreenRow = 10;
 	public final int screenWidth = tileSize * maxScreenCol;
 	public final int screenHeight = tileSize * maxScreenRow;
 	
@@ -29,6 +29,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public Background bg = new Background(this);
 	public Snake snake = new Snake(this, keyH);
 	public Apple apple = new Apple(this);
+	public UI ui = new UI(this);
 	
 	public GamePanel() {
 		Color c = new Color(21,21,21);
@@ -86,6 +87,7 @@ public class GamePanel extends JPanel implements Runnable{
 		bg.draw(g2);
 		snake.draw(g2);
 		apple.draw(g2);
+		ui.draw(g2);
 		
 		g2.dispose();
 	}
